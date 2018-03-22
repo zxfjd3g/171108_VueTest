@@ -55,11 +55,12 @@
 ## 5). watch
 	包含多个属性监视的对象
 	分为一般监视和深度监视
-		'xxx' : {
+	    xxx: function(value){}
+		xxx : {
 			deep : true,
 			handler : fun(value)
 		}
-	另一种添加监视方式: vm.$watch('xxx', funn)
+	另一种添加监视方式: vm.$watch('xxx', function(value){})
 
 # 4. 过渡动画
 	利用vue去操控css的transition/animation动画
