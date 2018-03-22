@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <title>04_class与style绑定</title>
   <style>
-    .classA {
+    .aClass {
       color: red;
     }
-    .classB {
-      background: blue;
+    .bClass {
+      color: blue;
     }
-    .classC {
-      font-size: 20px;
+    .cClass {
+      font-size: 30px;
     }
   </style>
 </head>
@@ -32,14 +32,39 @@
 
 <div id="demo">
   <h2>1. class绑定: :class='xxx'</h2>
+  <p class="cClass" :class="a">xxx是字符串</p>
+  <p :class="{aClass: isA, bClass: isB}">xxx是对象</p>
+  <p :class="['aClass', 'cClass']">xxx是数组</p>
+
 
   <h2>2. style绑定</h2>
+  <p :style="{color: activeColor, fontSize: fontSize + 'px'}">:style="{ color: activeColor, fontSize: fontSize + 'px' }"</p>
+
+  <button @click="update">更新</button>
 
 </div>
 
 <script type="text/javascript" src="../js/vue.js"></script>
 <script type="text/javascript">
-
+  new Vue({
+    el: '#demo',
+    data: {
+      a: 'aClass',
+      isA: true,
+      isB: false,
+      activeColor: 'red',
+      fontSize: 20
+    },
+    methods: {
+      update () {
+        this.a = 'bClass'
+        this.isA = false
+        this.isB = true
+        this.activeColor = 'green'
+        this.fontSize = 30
+      }
+    }
+  })
 </script>
 </body>
 </html>
