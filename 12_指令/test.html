@@ -3,6 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <title>12_指令_内置指令</title>
+  <style>
+    [v-cloak] {
+      display: none;
+    }
+  </style>
 </head>
 <body>
 <!--
@@ -20,12 +25,26 @@
   v-cloak : 使用它防止闪现表达式, 与css配合: [v-cloak] { display: none }
 -->
 <div id="example">
-
+  <p ref="content">atguigu.com</p>
+  <button @click="hint">提示</button>
+  <!--<p v-text="msg"></p>-->
+  <p v-cloak>{{msg}}</p>
 </div>
 
 <script type="text/javascript" src="../js/vue.js"></script>
 <script type="text/javascript">
-
+  alert('---')
+  new Vue({
+    el: '#example',
+    data: {
+      msg: '尚硅谷'
+    },
+    methods: {
+      hint () {
+        alert(this.$refs.content.textContent)
+      }
+    }
+  })
 </script>
 </body>
 </html>
